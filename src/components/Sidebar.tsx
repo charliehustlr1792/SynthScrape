@@ -1,10 +1,11 @@
 "use client"
-import React from 'react'
-import { HomeIcon, Layers2Icon, ShieldCheckIcon, CoinsIcon } from 'lucide-react'
+import React, { useState } from 'react'
+import { HomeIcon, Layers2Icon, ShieldCheckIcon, CoinsIcon, MenuIcon } from 'lucide-react'
 import Logo from './Logo'
 import { usePathname } from 'next/navigation'
-import { buttonVariants } from './ui/button'
+import { Button, buttonVariants } from './ui/button'
 import Link from 'next/link'
+import { Sheet, SheetContent, SheetTrigger } from './ui/sheet'
 
 const routes = [{
     href: "",
@@ -55,4 +56,44 @@ const DesktopSidebar = () => {
     )
 }
 
+export const MobileSidebar=()=>{
+    const [isOpen,setOpen]=useState(false);
+
+    const pathname = usePathname();
+    const activeRoute = routes.find((route) => route.href.length > 0 && pathname.includes(route.href)) || routes[0]
+    return(
+        <div className="block border-separate bg-background md:hidden">
+            <nav className='container flex items-center justify-between px-8'>
+                <Sheet open={isOpen} onOpenChange={setOpen}>
+                    <SheetTrigger asChild>
+                        <Button variant={"ghost"} size={"icon"}>
+                            <MenuIcon/>
+                        </Button>
+                    </SheetTrigger>
+                    <SheetContent className="w-[400px] sm:w-[540px] space-y-4" side={"left"}>
+                        <Logo/>
+                        <div className="flex flex-col gap-1">
+                            {routes.map((route) => {
+                    const Icon = route.icon;
+                    return (
+                        <Link 
+                            key={route.href}
+                            href={route.href}
+                            className={buttonVariants({
+                                variant: activeRoute.href === route.href ? "sidebarActiveItem" : "sidebarItem",
+                            })}
+                            onClick={()=>setOpen((prev)=>!prev)}
+                        >
+                            <Icon className="h-4 w-4" />
+                            {route.label}
+                        </Link>
+                    )
+                })}
+                        </div>
+                    </SheetContent>
+                </Sheet>
+            </nav>
+        </div>
+    )
+}
 export default DesktopSidebar
