@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import "./globals.css";
 import { ThemeProvider } from "@/components/theme-provider";
+import {ClerkProvider} from "@clerk/nextjs"
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -13,11 +14,17 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" suppressHydrationWarning>
+    <ClerkProvider afterSignOutUrl={"/sign-in"}
+    appearance={{elements:{
+      formButtonPrimary:"bg-primary hover:bg-primary/90 text-sm !shadow-none"
+    },
+    }}>
+      <html lang="en" suppressHydrationWarning>
       <body className="__variable_d65c78 antialiased" cz-shortcut-listen="true" screen_capture_injected="true"><ThemeProvider>
         {children}
       </ThemeProvider>
       </body>
     </html>
+    </ClerkProvider>
   );
 }
