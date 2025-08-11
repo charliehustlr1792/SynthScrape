@@ -6,6 +6,8 @@ import { usePathname } from 'next/navigation'
 import { Button, buttonVariants } from './ui/button'
 import Link from 'next/link'
 import { Sheet, SheetContent, SheetTrigger } from './ui/sheet'
+import { VisuallyHidden } from '@radix-ui/react-visually-hidden'
+import { DialogTitle } from '@radix-ui/react-dialog'
 
 const routes = [{
     href: "",
@@ -71,6 +73,9 @@ export const MobileSidebar=()=>{
                         </Button>
                     </SheetTrigger>
                     <SheetContent className="w-[400px] sm:w-[540px] space-y-4" side={"left"}>
+                        <VisuallyHidden>
+              <DialogTitle>Mobile Navigation</DialogTitle>
+            </VisuallyHidden>
                         <Logo/>
                         <div className="flex flex-col gap-1">
                             {routes.map((route) => {

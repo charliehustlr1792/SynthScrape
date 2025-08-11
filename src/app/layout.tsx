@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import "./globals.css";
 import { ThemeProvider } from "@/components/theme-provider";
 import {ClerkProvider} from "@clerk/nextjs"
+import AppProvider from "@/components/providers/AppProvider";
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -20,9 +21,12 @@ export default function RootLayout({
     },
     }}>
       <html lang="en" suppressHydrationWarning>
-      <body className="__variable_d65c78 antialiased" cz-shortcut-listen="true" screen_capture_injected="true"><ThemeProvider>
+      <body className="__variable_d65c78 antialiased" cz-shortcut-listen="true" screen_capture_injected="true">
+        <AppProvider>
+          <ThemeProvider>
         {children}
       </ThemeProvider>
+        </AppProvider>
       </body>
     </html>
     </ClerkProvider>
