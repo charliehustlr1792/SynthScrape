@@ -2,7 +2,7 @@ import { Separator } from '@/components/ui/separator'
 import DesktopSidebar from '@/components/Sidebar'
 import BreadcrumbHeader from '@/components/BreadcrumbHeader'
 import { ModeToggle } from '@/components/ThemeModeToggle'
-import { SignedIn } from '@clerk/nextjs'
+import { SignedIn,UserButton } from '@clerk/nextjs'
 import React from 'react'
 
 const layout = ({children}:{children:React.ReactNode}) => {
@@ -14,7 +14,9 @@ const layout = ({children}:{children:React.ReactNode}) => {
               <BreadcrumbHeader/>
               <div className="gap-1 flex items-center">
                 <ModeToggle/>
-                <SignedIn></SignedIn>
+                <SignedIn>
+                  <UserButton/>
+                </SignedIn>
               </div>
             </header>
             <Separator/>
