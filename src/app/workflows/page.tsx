@@ -3,7 +3,7 @@ import { AlertCircle, InboxIcon } from 'lucide-react'
 import { Skeleton } from '@/components/ui/skeleton'
 import React, { Suspense } from 'react'
 import { GetWorkflowsForUser } from '../../../actions/workflows/getWorkflowsForUser'
-
+import CreateWorkflowDialogue from './_components/CreateWorkflowDialogue'
 const page = () => {
     return (
         <div className='flex-1 flex flex-col h-full'>
@@ -12,6 +12,7 @@ const page = () => {
                     <h1 className='text-3xl font-bold'>Workflows</h1>
                     <p className='text-muted-foreground'>Manage your workflows</p>
                 </div>
+                <CreateWorkflowDialogue/>
             </div>
             <div className="h-full py-6">
                 <Suspense fallback={<UserWorkflowsSkeleton/>}>
@@ -57,6 +58,7 @@ async function UserWorkflows() {
                         Click the button below to create your first workflow
                     </p>
                 </div>
+                <CreateWorkflowDialogue triggerText="Create your first workflow"/>
             </div>
         )
     }

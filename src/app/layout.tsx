@@ -3,6 +3,7 @@ import "./globals.css";
 import { ThemeProvider } from "@/components/theme-provider";
 import {ClerkProvider} from "@clerk/nextjs"
 import AppProvider from "@/components/providers/AppProvider";
+import { Toaster } from "@/components/ui/sonner";
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -27,6 +28,7 @@ export default function RootLayout({
         {children}
       </ThemeProvider>
         </AppProvider>
+        <Toaster richColors/>
       </body>
     </html>
     </ClerkProvider>
