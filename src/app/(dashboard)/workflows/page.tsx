@@ -2,9 +2,10 @@ import { Alert, AlertDescription, AlertTitle} from '@/components/ui/alert'
 import { AlertCircle, InboxIcon } from 'lucide-react'
 import { Skeleton } from '@/components/ui/skeleton'
 import React, { Suspense } from 'react'
-import { GetWorkflowsForUser } from '../../../actions/workflows/getWorkflowsForUser'
+import { GetWorkflowsForUser } from '../../../../actions/workflows/getWorkflowsForUser'
 import CreateWorkflowDialogue from './_components/CreateWorkflowDialogue'
 import WorkflowCard from './_components/WorkflowCard'
+
 const page = () => {
     return (
         <div className='flex-1 flex flex-col h-full'>
@@ -38,16 +39,15 @@ async function UserWorkflows() {
     if(!workflows){
         return(
             <Alert variant={"destructive"}>
-                <AlertCircle className="w-4 h-4">
-                    <AlertTitle>Error</AlertTitle>
-                    <AlertDescription>
-                        Something went wrong. Please try again later
-                    </AlertDescription>
-                </AlertCircle>
+                <AlertCircle className="w-4 h-4"/>
+                <AlertTitle>Error</AlertTitle>
+                <AlertDescription>
+                    Something went wrong. Please try again later
+                </AlertDescription>
             </Alert>
         )
     }
-    if(workflows.length==0){
+    if(workflows.length === 0){
         return (
             <div className="flex flex-col gap-4 h-full items-center justify-center">
                 <div className="rounded-full bg-accent w-20 h-20 flex items-center justify-center">

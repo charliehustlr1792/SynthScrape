@@ -4,13 +4,13 @@ import { Dialog, DialogContent, DialogTrigger } from "@/components/ui/dialog"
 import { Button } from '@/components/ui/button'
 import { Layers2Icon, Loader2 } from 'lucide-react';
 import CustomDialogHeader from '@/components/CustomDialogHeader';
-import { createWorkflowSchema, createWorkflowShemaType } from '../../../../schema/workflow';
+import { createWorkflowSchema, createWorkflowSchemaType } from '../../../../../schema/workflow';
 import { useForm } from "react-hook-form"
 import { zodResolver } from "@hookform/resolvers/zod"
 import { Form, FormControl, FormDescription, FormField, FormItem, FormLabel, FormMessage } from '@/components/ui/form';
 import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
-import { CreateWorkflow } from '../../../../actions/workflows/createWorkflow';
+import { CreateWorkflow } from '../../../../../actions/workflows/createWorkflow';
 import { useMutation } from '@tanstack/react-query';
 import { toast } from 'sonner';
 
@@ -19,7 +19,7 @@ const CreateWorkflowDialogue = ({ triggerText }: { triggerText?: string }) => {
     const [open, setOpen] = useState(false);
 
 
-    const form = useForm<createWorkflowShemaType>({
+    const form = useForm<createWorkflowSchemaType>({
         resolver: zodResolver(createWorkflowSchema),
         defaultValues: {
             name: "",
@@ -38,7 +38,7 @@ const CreateWorkflowDialogue = ({ triggerText }: { triggerText?: string }) => {
         }
     })
 
-    const onSubmit = useCallback((values: createWorkflowShemaType) => {
+    const onSubmit = useCallback((values: createWorkflowSchemaType) => {
         toast.loading("Creating workflow...", { id: "create-workflow" });
         mutate(values)
     }, [mutate])
@@ -84,7 +84,7 @@ const CreateWorkflowDialogue = ({ triggerText }: { triggerText?: string }) => {
                                         <Textarea className='resize-none' {...field} />
                                     </FormControl>
                                     <FormDescription>
-                                        Privide a brief description of what your workflow does.<br /> This is optional but can help you remember the workflow&apos;s purpose
+                                        Provide a brief description of what your workflow does.<br /> This is optional but can help you remember the workflow&apos;s purpose
                                     </FormDescription>
                                     <FormMessage />
                                 </FormItem>
