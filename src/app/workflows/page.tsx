@@ -4,6 +4,7 @@ import { Skeleton } from '@/components/ui/skeleton'
 import React, { Suspense } from 'react'
 import { GetWorkflowsForUser } from '../../../actions/workflows/getWorkflowsForUser'
 import CreateWorkflowDialogue from './_components/CreateWorkflowDialogue'
+import WorkflowCard from './_components/WorkflowCard'
 const page = () => {
     return (
         <div className='flex-1 flex flex-col h-full'>
@@ -62,9 +63,12 @@ async function UserWorkflows() {
             </div>
         )
     }
-    return <div></div>
+    return <div className="grid grid-cols-1 gap-4">
+        {workflows.map((workflow)=>(
+            <WorkflowCard key={workflow.id} workflow={workflow}/>
+        ))}
+    </div>
+
 }
-
-
 
 export default page
