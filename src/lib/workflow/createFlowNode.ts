@@ -6,6 +6,7 @@ export function CreateFlowNode(nodeType:TaskType,
     return {
         id:crypto.randomUUID(),
         type:"SynthScrapeNode",
+        dragHandle:'.drag-handle',
         data:{
             type:nodeType,
             inputs:{},

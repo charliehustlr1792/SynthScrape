@@ -10,13 +10,17 @@ const nodeTypes={
     SynthScrapeNode:NodeComponent
 }
 
+const snapGrid:[number,number]=[50,50]
+const fitViewOptions={padding:1}
+
 const FlowEditor = ({ workflow }: { workflow: Workflow }) => {
     const [nodes, setNodes, onNodesChange] = useNodesState([ CreateFlowNode(TaskType.LAUNCH_BROWSER)]);
     const [edges, setEdges, onEdgesChange] = useEdgesState([]);
     return (
         <main className='h-full w-full'>
-            <ReactFlow nodes={nodes} edges={edges} onEdgesChange={onEdgesChange} onNodesChange={onNodesChange} nodeTypes={nodeTypes}>
-                <Controls position='top-left' />
+            <ReactFlow nodes={nodes} edges={edges} onEdgesChange={onEdgesChange} onNodesChange={onNodesChange} nodeTypes={nodeTypes}
+            snapToGrid snapGrid={snapGrid} fitView fitViewOptions={fitViewOptions}>
+                <Controls position='top-left' fitViewOptions={fitViewOptions}/>
                 <Background variant={BackgroundVariant.Dots} gap={12} size={1} />
             </ReactFlow>
         </main>
