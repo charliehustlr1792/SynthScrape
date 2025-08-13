@@ -10,7 +10,33 @@ const compat = new FlatCompat({
 });
 
 const eslintConfig = [
-  ...compat.extends("next/core-web-vitals", "next/typescript"),
+  // Global ignores - these files/directories will be completely ignored
+  {
+    ignores: [
+      "node_modules/**",
+      ".next/**",
+      "out/**", 
+      "build/**",
+      "dist/**",
+      "src/generated/**",
+      "**/*.generated.*",
+      "prisma/generated/**",
+      // Add any other generated directories you have
+    ]
+  },
+  
+  // Extend Next.js recommended config
+  ...compat.extends("next/core-web-vitals"),
+  
+  // Your custom rules
+  {
+    rules: {
+      // Add any custom ESLint rules here
+      // For example:
+      // "@typescript-eslint/no-unused-vars": "warn",
+      // "@typescript-eslint/no-unused-expressions": "warn",
+    }
+  }
 ];
 
 export default eslintConfig;

@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import "./globals.css";
 import { ThemeProvider } from "@/components/theme-provider";
-import {ClerkProvider} from "@clerk/nextjs"
+import { ClerkProvider } from "@clerk/nextjs"
 import AppProvider from "@/components/providers/AppProvider";
 import { Toaster } from "@/components/ui/sonner";
 
@@ -17,20 +17,21 @@ export default function RootLayout({
 }>) {
   return (
     <ClerkProvider afterSignOutUrl={"/sign-in"}
-    appearance={{elements:{
-      formButtonPrimary:"bg-primary hover:bg-primary/90 text-sm !shadow-none"
-    },
-    }}>
+      appearance={{
+        elements: {
+          formButtonPrimary: "bg-primary hover:bg-primary/90 text-sm !shadow-none"
+        },
+      }}>
       <html lang="en" suppressHydrationWarning>
-      <body className="__variable_d65c78 antialiased" cz-shortcut-listen="true" screen_capture_injected="true">
-        <AppProvider>
-          <ThemeProvider>
-        {children}
-      </ThemeProvider>
-        </AppProvider>
-        <Toaster richColors/>
-      </body>
-    </html>
+        <body className="__variable_d65c78 antialiased">
+          <AppProvider>
+            <ThemeProvider>
+              {children}
+            </ThemeProvider>
+          </AppProvider>
+          <Toaster richColors />
+        </body>
+      </html>
     </ClerkProvider>
   );
 }
