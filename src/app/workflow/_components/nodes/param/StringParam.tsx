@@ -19,12 +19,9 @@ const StringParam = ({param,value,updateNodeParamValue}:ParamProps) => {
         id={id} 
         value={internalValue} 
         placeholder='Enter value here' 
-        onChange={(e)=>
-            setInternalValue(e.target.value)
-        }
-        onBlur={(e)=>
-            updateNodeParamValue(e.target.value)
-        }/>
+        onChange={(e)=>setInternalValue(e.target.value)}
+        onBlur={(e)=>updateNodeParamValue(e.target.value)}
+        />
         {param.helperText && (<p className='text-muted-foreground px-2'>{param.helperText}</p>)}
     </div>
   )

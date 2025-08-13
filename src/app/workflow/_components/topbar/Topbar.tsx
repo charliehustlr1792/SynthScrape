@@ -1,7 +1,7 @@
 import TooltipWrapper from '@/components/TooltipWrapper'
 import { Button } from '@/components/ui/button'
 import { ChevronLeftIcon } from 'lucide-react'
-import { useRouter } from 'next/router'
+import { useRouter } from 'next/navigation'
 import React from 'react'
 import SaveButton from './SaveButton'
 

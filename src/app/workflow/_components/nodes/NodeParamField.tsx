@@ -24,6 +24,7 @@ const NodeParamField = ({param,nodeId}:{
                 }
             })
         },[nodeId,updateNodeData,param.name,node?.data.inputs])
+
   switch(param.type){
     case TaskParamType.STRING:
         return <StringParam 

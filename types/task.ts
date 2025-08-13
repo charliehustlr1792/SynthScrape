@@ -5,7 +5,8 @@ export enum TaskType{
 
 export enum TaskParamType{
     STRING="STRING",
-    BROWSER_INSTANCE="BROWSER_INSTANCE"
+    BROWSER_INSTANCE="BROWSER_INSTANCE",
+    //EXTRACT_TEXT_FROM_ELEMENT="EXTRACT_TEXT_FROM_ELEMENT"
 }
 
 export interface TaskParam{
@@ -14,5 +15,6 @@ export interface TaskParam{
     helperText?:string;
     required?:boolean;
     hideHandle?:boolean;
+    value?:string
     [key:string]:any
 }
