@@ -1,6 +1,6 @@
+"use server"
 import prisma from '@/lib/prisma';
 import { WorkflowExecution } from './../../src/generated/prisma/index.d';
-"use server"
 
 import { auth } from "@clerk/nextjs/server"
 

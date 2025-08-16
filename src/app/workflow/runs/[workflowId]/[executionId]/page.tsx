@@ -4,20 +4,20 @@ import { Suspense } from "react";
 import { GetWorkflowExecutionWithPhases } from "../../../../../../actions/workflows/getWorkflowExecutionWithPhases";
 import ExecutionViewer from "./_components/ExecutionViewer";
 
-export default function ExecutionViewsPage({
+async function ExecutionViewsPage({
     params
 }:{
-    params:{
+    params:Promise<{
         executionId:string;
         workflowId:string
-    }
+    }>
 }){
     return(
         <div className="flex flex-col h-screen w-full overflow-hidden">
             <Topbar
-                workflowId={params.workflowId}
+                workflowId={(await params).workflowId}
                 title="Workflow run details"
-                subTitle={`Run ID:${params.executionId}`}
+                subTitle={`Run ID:${(await params).executionId}`}
                 hideButtons
             />
             <section className="flex h-full overflow-auto">
@@ -28,12 +28,14 @@ export default function ExecutionViewsPage({
                     </div>
                  }
                  >
-                    <ExecutionViewerWrapper executionId={params.executionId}/>
+                    <ExecutionViewerWrapper executionId={(await params).executionId}/>
                  </Suspense>
             </section>
         </div>
     )
 }
+
+export default ExecutionViewsPage
 
 async function ExecutionViewerWrapper({
     executionId
