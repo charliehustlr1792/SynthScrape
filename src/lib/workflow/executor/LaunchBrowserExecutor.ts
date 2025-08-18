@@ -8,7 +8,10 @@ export async function LaunchBrowserExecutor(environment:ExecutionEnvironment<typ
         const browser=await puppeteer.launch({
             headless:true
         })
-        await browser.close();
+        environment.setBrowser(browser)
+        const page=await browser.newPage()
+        await page.goto(websiteUrl)
+        environment.setPage(page)
         return true;
     }catch(error){
         console.error(error)
