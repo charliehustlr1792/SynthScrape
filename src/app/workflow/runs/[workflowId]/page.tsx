@@ -4,14 +4,14 @@ import Topbar from "../../_components/topbar/Topbar";
 import { InboxIcon, Loader2Icon } from "lucide-react";
 import ExecutionsTable from "./_components/ExecutionsTable";
 
-export default function ExecutionsPage({ params }: { params: { workflowId: string } }) {
+export default async function ExecutionsPage({params}:{params:Promise<{workflowId:string}>}) {
     return (
         <div className="h-full w-full overflow-auto">
-            <Topbar workflowId={params.workflowId} hideButtons title="All runs" subTitle="List of all your workflow runs" />
+            <Topbar workflowId={(await params).workflowId} hideButtons title="All runs" subTitle="List of all your workflow runs" />
             <Suspense fallback={<div className="flex h-full w-full items-center justify-center">
                 <Loader2Icon size={30} className="aniamte-spin stroke-primary" />
             </div>}>
-                <ExecutionsTableWrapper workflowId={params.workflowId} />
+                <ExecutionsTableWrapper workflowId={(await params).workflowId} />
             </Suspense>
         </div>
     );
