@@ -2,7 +2,7 @@
 
 import prisma from "@/lib/prisma"
 import { auth } from "@clerk/nextjs/server"
-import { ExecutionPhaseStatus, WorkflowExecutionPlan, WorkflowExecutionStatus, WorkflowExecutionTrigger } from "../../types/workflow"
+import { ExecutionPhaseStatus, WorkflowExecutionPlan, WorkflowExecutionStatus, WorkflowExecutionTrigger, WorkflowStatus } from "../../types/workflow"
 import { FlowToExecutionPlan } from "@/lib/workflow/executionPlan"
 import { TaskRegistry } from "@/lib/workflow/task/registry"
 import { redirect } from "next/navigation"
@@ -11,7 +11,7 @@ import { ExecuteWorkflow } from "@/lib/workflow/executeWorkflow"
 export async function RunWorkflow(form: {
     workflowId: string
     flowDefinition?: string
-}){
+}) {
     const { userId } = await auth()
     if (!userId) {
         throw new Error("Unauthenticated")
@@ -33,21 +33,29 @@ export async function RunWorkflow(form: {
     }
 
     let executionPlan: WorkflowExecutionPlan
-    if (!flowDefinition) {
-        throw new Error("Flow definition is not defined")
-    }
+    if (workflow.status == WorkflowStatus.PUBLISHED) {
+        if (!workflow.executionPlan) {
+            throw new Error("No execution plan fould in published workflow")
+        }
+        executionPlan = JSON.parse(workflow.executionPlan)
+    } else {
+        //wprkflow is a draft
+        if (!flowDefinition) {
+            throw new Error("Flow definition is not defined")
+        }
+        const flow = JSON.parse(flowDefinition)
+        const result = FlowToExecutionPlan(flow.nodes, flow.edges)
+        if (result.error) {
+            throw new Error("Flow definition is not valid")
+        }
 
-    const flow = JSON.parse(flowDefinition)
-    const result = FlowToExecutionPlan(flow.nodes, flow.edges)
-    if (result.error) {
-        throw new Error("Flow definition is not valid")
-    }
+        if (!result.executionPlan) {
+            throw new Error("No execution plan generated")
+        }
 
-    if (!result.executionPlan) {
-        throw new Error("No execution plan generated")
-    }
+        executionPlan = result.executionPlan
 
-    executionPlan = result.executionPlan
+    }
 
     const execution = await prisma.workflowExecution.create({
         data: {
@@ -56,7 +64,7 @@ export async function RunWorkflow(form: {
             status: WorkflowExecutionStatus.PENDING,
             startedAt: new Date(),
             trigger: WorkflowExecutionTrigger.MANUAL,
-            definition:flowDefinition,
+            definition: flowDefinition!,
             phases: {
                 create: executionPlan.flatMap((phase) => {
                     return phase.nodes.flatMap((node) => {

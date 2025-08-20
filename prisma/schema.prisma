@@ -20,6 +20,8 @@ model Workflow {
   name        String
   description String?
   definition  String
+  executionPlan String?
+  creditsCost Int @default(0)
   status      String //Draft/published
 
   lastRunAt DateTime?
