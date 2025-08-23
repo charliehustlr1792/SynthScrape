@@ -14,7 +14,7 @@ import { Browser, Page } from 'puppeteer';
 import { Edge } from '@xyflow/react';
 import { createLogCollector } from '../log';
 
-export async function ExecuteWorkflow(executionId:string) {
+export async function ExecuteWorkflow(executionId:string,nextRunAt?:Date) {
     const execution=await prisma.workflowExecution.findUnique({
         where:{id:executionId},
         include:{workflow:true,phases:true}
@@ -29,7 +29,7 @@ export async function ExecuteWorkflow(executionId:string) {
     //setup execution environment
     const environment:Environment={phases:{}}
     //initialize workflow execution
-    await initializeWorkflowExecution(executionId,execution.workflowId)
+    await initializeWorkflowExecution(executionId,execution.workflowId,nextRunAt)
     //initalize phases status
     await initializePhaseStatuses(execution)
 
@@ -52,7 +52,7 @@ export async function ExecuteWorkflow(executionId:string) {
     revalidatePath('/workflows/runs')
 }
 
-async function initializeWorkflowExecution(executionId:string,workflowId:string){
+async function initializeWorkflowExecution(executionId:string,workflowId:string,nextRunAt?:Date){
     await prisma.workflowExecution.update({
         where:{id:executionId},
         data:{
@@ -68,7 +68,8 @@ async function initializeWorkflowExecution(executionId:string,workflowId:string)
         data:{
             lastRunAt:new Date(),
             lastRunStatus:WorkflowExecutionStatus.RUNNING,
-            lastRunId:executionId
+            lastRunId:executionId,
+            ...(nextRunAt && {nextRunAt})
         }
     })
     
