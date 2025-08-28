@@ -10,7 +10,7 @@ import { Button, buttonVariants } from '@/components/ui/button'
 import { DropdownMenu, DropdownMenuContent, DropdownMenuLabel, DropdownMenuSeparator, DropdownMenuTrigger } from "@/components/ui/dropdown-menu"
 import TooltipWrapper from '@/components/TooltipWrapper'
 import { DropdownMenuItem } from '@/components/ui/dropdown-menu'
-import DeleteWorkflowDialog from './DeleteWrokflowDialog'
+import DeleteWorkflowDialog from './DeleteWorkflowDialog'
 import RunButton from './RunButton'
 import SchedulerDialog from './SchedulerDialog'
 import { Badge } from '@/components/ui/badge'
