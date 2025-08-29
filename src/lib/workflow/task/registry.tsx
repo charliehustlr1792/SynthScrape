@@ -2,6 +2,7 @@ import { TaskType } from "../../../../types/task";
 import { WorkflowTask } from "../../../../types/workflow";
 import { ClickElementTask } from "./ClickElement";
 import { DeliverViaWebhookTask } from "./DeliverViaWebhook";
+import { ExtractDataWithAITask } from "./ExtractDataWithAI";
 import { ExtractTextFromElementTask } from "./ExtractTextFromElement";
 import { FillInputTask } from "./FillInput";
 import { LaunchBrowserTask } from "./LaunchBrowser";
@@ -21,5 +22,6 @@ export const TaskRegistry:Registry={
     FILL_INPUT:FillInputTask,
     CLICK_ELEMENT:ClickElementTask,
     WAIT_FOR_ELEMENT:WaitForElementTask,
-    DELIVER_VIA_WEBHOOK:DeliverViaWebhookTask
+    DELIVER_VIA_WEBHOOK:DeliverViaWebhookTask,
+    EXTRACT_DATA_WITH_AI:ExtractDataWithAITask
 }
