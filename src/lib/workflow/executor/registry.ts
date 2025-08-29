@@ -8,6 +8,7 @@ import { ExtractDataWithAIExecutor } from "./ExtractDataWithAIExecutor";
 import { FillInputExecutor } from "./FillInputExecutor";
 import { LaunchBrowserExecutor } from "./LaunchBrowserExecutor";
 import { PageToHtmlExecutor } from "./PageToHtmlExecutor";
+import { ReadPropertyFromJsonExecutor } from "./ReadPropertyFromJsonExecutor";
 import { WaitForELementExecutor } from "./WaitForElementExecutor";
 
 type ExecutorFn<T extends WorkflowTask>=(
@@ -26,5 +27,6 @@ export const ExecutorRegistry:RegistryType={
     CLICK_ELEMENT:ClickELementExecutor,
     WAIT_FOR_ELEMENT:WaitForELementExecutor,
     DELIVER_VIA_WEBHOOK:DeliverViaWebhookExecutor,
-    EXTRACT_DATA_WITH_AI:ExtractDataWithAIExecutor
+    EXTRACT_DATA_WITH_AI:ExtractDataWithAIExecutor,
+    READ_PROPERTY_FROM_JSON:ReadPropertyFromJsonExecutor
 }

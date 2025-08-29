@@ -7,6 +7,7 @@ import { ExtractTextFromElementTask } from "./ExtractTextFromElement";
 import { FillInputTask } from "./FillInput";
 import { LaunchBrowserTask } from "./LaunchBrowser";
 import { PageToHtmlTask } from "./PageToHtml";
+import { ReadPropertyFromJsonTask } from "./RedPropertyFromJson";
 import { WaitForElementTask } from "./WaitForElement";
 
 
@@ -23,5 +24,6 @@ export const TaskRegistry:Registry={
     CLICK_ELEMENT:ClickElementTask,
     WAIT_FOR_ELEMENT:WaitForElementTask,
     DELIVER_VIA_WEBHOOK:DeliverViaWebhookTask,
-    EXTRACT_DATA_WITH_AI:ExtractDataWithAITask
+    EXTRACT_DATA_WITH_AI:ExtractDataWithAITask,
+    READ_PROPERTY_FROM_JSON:ReadPropertyFromJsonTask
 }
