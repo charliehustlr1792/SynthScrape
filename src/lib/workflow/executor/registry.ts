@@ -1,6 +1,7 @@
 import { ExecutionEnvironment } from "../../../../types/executor";
 import { TaskType } from "../../../../types/task";
 import { WorkflowTask } from "../../../../types/workflow";
+import { AddPropertyToJsonExecutor } from "./AddPropertyToJsonExecutor";
 import { ClickELementExecutor } from "./ClickElementExecutor";
 import { DeliverViaWebhookExecutor } from "./DeliverViaWebhookExecutor";
 import { ExtractTextFromElementExecutor } from "./ExtactTextFromElementExecutor";
@@ -28,5 +29,6 @@ export const ExecutorRegistry:RegistryType={
     WAIT_FOR_ELEMENT:WaitForELementExecutor,
     DELIVER_VIA_WEBHOOK:DeliverViaWebhookExecutor,
     EXTRACT_DATA_WITH_AI:ExtractDataWithAIExecutor,
-    READ_PROPERTY_FROM_JSON:ReadPropertyFromJsonExecutor
+    READ_PROPERTY_FROM_JSON:ReadPropertyFromJsonExecutor,
+    ADD_PROPERTY_TO_JSON:AddPropertyToJsonExecutor
 }
