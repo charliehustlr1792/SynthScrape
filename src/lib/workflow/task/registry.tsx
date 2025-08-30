@@ -7,6 +7,7 @@ import { ExtractDataWithAITask } from "./ExtractDataWithAI";
 import { ExtractTextFromElementTask } from "./ExtractTextFromElement";
 import { FillInputTask } from "./FillInput";
 import { LaunchBrowserTask } from "./LaunchBrowser";
+import { NavigateUrlTask } from "./NavigateUrl";
 import { PageToHtmlTask } from "./PageToHtml";
 import { ReadPropertyFromJsonTask } from "./ReadPropertyFromJson";
 import { WaitForElementTask } from "./WaitForElement";
@@ -27,5 +28,6 @@ export const TaskRegistry:Registry={
     DELIVER_VIA_WEBHOOK:DeliverViaWebhookTask,
     EXTRACT_DATA_WITH_AI:ExtractDataWithAITask,
     READ_PROPERTY_FROM_JSON:ReadPropertyFromJsonTask,
-    ADD_PROPERTY_TO_JSON:AddPropertyToJsonTask
+    ADD_PROPERTY_TO_JSON:AddPropertyToJsonTask,
+    NAVIGATE_URL:NavigateUrlTask
 }
