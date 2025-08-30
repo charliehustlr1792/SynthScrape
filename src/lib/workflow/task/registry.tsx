@@ -10,6 +10,7 @@ import { LaunchBrowserTask } from "./LaunchBrowser";
 import { NavigateUrlTask } from "./NavigateUrl";
 import { PageToHtmlTask } from "./PageToHtml";
 import { ReadPropertyFromJsonTask } from "./ReadPropertyFromJson";
+import { ScrollToElementTask } from "./ScrollToElement";
 import { WaitForElementTask } from "./WaitForElement";
 
 
@@ -29,5 +30,6 @@ export const TaskRegistry:Registry={
     EXTRACT_DATA_WITH_AI:ExtractDataWithAITask,
     READ_PROPERTY_FROM_JSON:ReadPropertyFromJsonTask,
     ADD_PROPERTY_TO_JSON:AddPropertyToJsonTask,
-    NAVIGATE_URL:NavigateUrlTask
+    NAVIGATE_URL:NavigateUrlTask,
+    SCROLL_TO_ELEMENT:ScrollToElementTask
 }

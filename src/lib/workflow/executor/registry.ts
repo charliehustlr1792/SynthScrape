@@ -11,6 +11,7 @@ import { LaunchBrowserExecutor } from "./LaunchBrowserExecutor";
 import { NavigateUrlExecutor } from "./NavigatUrlExecutor";
 import { PageToHtmlExecutor } from "./PageToHtmlExecutor";
 import { ReadPropertyFromJsonExecutor } from "./ReadPropertyFromJsonExecutor";
+import { ScrollToElementExecutor } from "./ScrollToElementExecutor";
 import { WaitForELementExecutor } from "./WaitForElementExecutor";
 
 type ExecutorFn<T extends WorkflowTask>=(
@@ -32,5 +33,6 @@ export const ExecutorRegistry:RegistryType={
     EXTRACT_DATA_WITH_AI:ExtractDataWithAIExecutor,
     READ_PROPERTY_FROM_JSON:ReadPropertyFromJsonExecutor,
     ADD_PROPERTY_TO_JSON:AddPropertyToJsonExecutor,
-    NAVIGATE_URL:NavigateUrlExecutor
+    NAVIGATE_URL:NavigateUrlExecutor,
+    SCROLL_TO_ELEMENT:ScrollToElementExecutor
 }
