@@ -11,7 +11,7 @@ import { DialogTitle } from '@radix-ui/react-dialog'
 import UserAvailableCreditsBadge from './UserAvailableCreditsBadge'
 
 const routes = [{
-    href: "/",
+    href: "",
     label: "Home",
     icon: HomeIcon,
 }, {
@@ -46,7 +46,7 @@ const DesktopSidebar = () => {
                     return (
                         <Link 
                             key={route.href}
-                            href={route.href}
+                            href={`/${route.href}`}
                             className={buttonVariants({
                                 variant: activeRoute.href === route.href ? "sidebarActiveItem" : "sidebarItem",
                             })}
@@ -84,7 +84,7 @@ export const MobileSidebar=()=>{
                     return (
                         <Link 
                             key={route.href}
-                            href={route.href}
+                            href={`/${route.href}`}
                             className={buttonVariants({
                                 variant: activeRoute.href === route.href ? "sidebarActiveItem" : "sidebarItem",
                             })}
