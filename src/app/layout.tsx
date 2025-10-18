@@ -1,9 +1,12 @@
 import type { Metadata } from "next";
+import { Inter } from "next/font/google";
 import "./globals.css";
 import { ThemeProvider } from "@/components/theme-provider";
 import { ClerkProvider } from "@clerk/nextjs"
 import AppProvider from "@/components/providers/AppProvider";
 import { Toaster } from "@/components/ui/sonner";
+
+const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -23,7 +26,7 @@ export default function RootLayout({
         },
       }}>
       <html lang="en" suppressHydrationWarning>
-        <body className="__variable_d65c78 antialiased">
+        <body className={`${inter.className} antialiased`}>
           <AppProvider>
             <ThemeProvider>
               {children}

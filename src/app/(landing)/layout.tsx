@@ -1,8 +1,8 @@
 import React from 'react'
 
-const layout = () => {
+const layout = ({children}:{children:React.ReactNode}) => {
   return (
-    <div>layout</div>
+    <div>{children}</div>
   )
 }
 
