@@ -11,6 +11,9 @@ const inter = Inter({ subsets: ["latin"] });
 export const metadata: Metadata = {
   title: "SynthScrape",
   description: "AI-powered visual web scraper with scheduling, credential control, and workflow automation",
+  icons:{
+    icon:"/favicon.png"
+  }
 };
 
 export default function RootLayout({
