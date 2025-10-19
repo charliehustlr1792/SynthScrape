@@ -2,6 +2,34 @@ import React from 'react'
 import Navbar from './_components/Navbar'
 import Link from 'next/link'
 import Image from 'next/image'
+import CustomAccordion from './_components/CustomAccordion'
+import { Activity } from 'lucide-react'
+
+
+const content = [
+    {
+        icon:Activity,
+        title: "Increased Productivity",
+        subheading: "Automate complex web scraping tasks and save valuable time.",
+        description: "Boost your workflow efficiency by automating repetitive data collection. Free your team to focus on insights and decision-making instead of manual scraping."
+    }, {
+        icon:Activity,
+        title: "AI Powered Workflows",
+        subheading: "Leverage AI to manage and manipulate your data during the scraping process.",
+        description: "Our intelligent algorithms analyze or modify your scraped data, providing predictive insights you can act on."
+    }, {
+        icon:Activity,
+        title: "Automated Workflows",
+        subheading: "Build automated workflows that run on your schedule.",
+        description: "Easily chain together scraping steps and automate end-to-end data collection. Set schedules or triggers and let Scrapeflow handle the rest automatically."
+    }, {
+        icon:Activity,
+        title: "Cost Transparency",
+        subheading: "Transparent pricing with clear usage breakdowns.",
+        description: "Know exactly what you’re paying for with detailed cost reports. Optimize your budget and only pay for the data you actually collect."
+    }
+]
+
 
 const LandingPage = () => {
     return (
@@ -9,7 +37,7 @@ const LandingPage = () => {
             <div className="absolute left-1/2 -translate-x-1/2 top-[-91px] w-full max-w-[1200px] h-[1273px] pointer-events-none hidden sm:block">
                 <Image
                     src="/background.png"
-                    alt=""
+                    alt="background gradient"
                     fill
                     className="object-contain"
                     priority
@@ -18,7 +46,7 @@ const LandingPage = () => {
             <div className="absolute left-1/2 -translate-x-1/2 top-[150px] w-full max-w-[600px] h-[600px] pointer-events-none sm:hidden opacity-60">
                 <Image
                     src="/background.png"
-                    alt=""
+                    alt="background gradient"
                     fill
                     className="object-contain"
                     priority
@@ -70,17 +98,22 @@ const LandingPage = () => {
             </div>
 
 
-            <div className="mx-auto text-center px-4 sm:px-6 lg:px-4">
+            <div className="mx-auto text-center px-[70px] min-h-screen flex flex-col">
                 <h1 className="text-[#F2F4FF] text-4xl sm:text-2xl font-bold leading-tight sm:leading-tight md:leading-tight lg:leading-[72px] mb-4 sm:mb-6">
                     Built for REAL WORLD web scraping needs
                 </h1>
 
-                <p className="max-w-[525px] mx-auto text-[#ECEDFF] text-base sm:text-lg font-normal leading-relaxed sm:leading-[27px] mb-8 sm:mb-10">
+                <p className="max-w-[625px] mx-auto text-[#ECEDFF] text-base sm:text-lg font-normal leading-relaxed sm:leading-[27px] mb-8 sm:mb-10">
                     Scrapeflow empowers you to automate web data extraction with no coding required. Create custom scraping workflows, monitor web pages, and transform raw data into actionable and easier than ever.
                 </p>
+
+                <div className='grid grid-cols-2 gap-6 flex-col p-4 '>
+                    {content.map((item, index) => (
+                        <CustomAccordion key={index} title={item.title} subheading={item.subheading} description={item.description} icon={item.icon}/>
+                    ))}
+                </div>
             </div>
-            
-            
+
 
         </div>
     )
