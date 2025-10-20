@@ -4,6 +4,7 @@ import Link from 'next/link'
 import Image from 'next/image'
 import CustomAccordion from './_components/CustomAccordion'
 import { Activity } from 'lucide-react'
+import Footer from './_components/Footer'
 
 
 const content = [
@@ -33,6 +34,7 @@ const content = [
 
 const LandingPage = () => {
     return (
+        <>
         <div className="w-full min-h-screen bg-[#030013] relative overflow-hidden">
             <div className="absolute left-1/2 -translate-x-1/2 top-[-91px] w-full max-w-[1200px] h-[1273px] pointer-events-none hidden sm:block">
                 <Image
@@ -113,9 +115,9 @@ const LandingPage = () => {
                     ))}
                 </div>
             </div>
-
-
         </div>
+        <Footer/>
+        </>
     )
 }
 
