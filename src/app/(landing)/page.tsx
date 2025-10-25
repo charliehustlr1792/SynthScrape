@@ -6,6 +6,7 @@ import CustomAccordion from './_components/CustomAccordion'
 import { Activity } from 'lucide-react'
 import Footer from './_components/Footer'
 import Features from './_components/Features'
+import { FAQSection } from './_components/FAQ'
 
 
 const content = [
@@ -172,7 +173,8 @@ const LandingPage = () => {
                     </div>
                 </div>
             </div>
-
+            
+            <FAQSection/>
             <Footer />
         </>
     )
