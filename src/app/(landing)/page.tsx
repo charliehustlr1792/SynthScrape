@@ -1,3 +1,4 @@
+"use client"
 import React, { useEffect } from 'react'
 import Navbar from './_components/Navbar'
 import Link from 'next/link'
