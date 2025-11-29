@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import Navbar from './_components/Navbar'
 import Link from 'next/link'
 import Image from 'next/image'
@@ -7,6 +7,8 @@ import { Activity } from 'lucide-react'
 import Footer from './_components/Footer'
 import Features from './_components/Features'
 import { FAQSection } from './_components/FAQ'
+import { useUser } from '@clerk/nextjs'
+import { useRouter } from 'next/router'
 
 
 const content = [
@@ -66,6 +68,16 @@ const CardContent = [
 
 
 const LandingPage = () => {
+    const { isSignedIn, isLoaded } = useUser();
+  const router = useRouter();
+
+  useEffect(() => {
+    if (isLoaded && isSignedIn) {
+      router.push("/dashboard");
+    }
+  }, [isSignedIn, isLoaded, router]);
+
+  if (!isLoaded) return <div>Loading...</div>;
     return (
         <>
             <div className="w-full min-h-screen bg-[#030013] relative overflow-hidden">
