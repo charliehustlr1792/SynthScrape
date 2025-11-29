@@ -1,4 +1,3 @@
-"use client"
 import React, { useEffect } from 'react'
 import Navbar from './_components/Navbar'
 import Link from 'next/link'
@@ -10,6 +9,8 @@ import Features from './_components/Features'
 import { FAQSection } from './_components/FAQ'
 import { useUser } from '@clerk/nextjs'
 import { useRouter } from 'next/router'
+import { auth } from '@clerk/nextjs/server'
+import { redirect } from 'next/navigation'
 
 
 const content = [
@@ -68,17 +69,11 @@ const CardContent = [
 ]
 
 
-const LandingPage = () => {
-    const { isSignedIn, isLoaded } = useUser();
-  const router = useRouter();
-
-  useEffect(() => {
-    if (isLoaded && isSignedIn) {
-      router.push("/dashboard");
+const LandingPage = async () => {
+    const {userId}=await auth();
+    if(userId){
+        redirect('/dashboard');
     }
-  }, [isSignedIn, isLoaded, router]);
-
-  if (!isLoaded) return <div>Loading...</div>;
     return (
         <>
             <div className="w-full min-h-screen bg-[#030013] relative overflow-hidden">
