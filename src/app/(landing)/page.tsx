@@ -76,105 +76,89 @@ const LandingPage = async () => {
     }
     return (
         <>
-            <div className="w-full min-h-screen bg-[#030013] relative overflow-hidden">
-                <div className="absolute left-1/2 -translate-x-1/2 top-[-91px] w-full max-w-[1200px] h-[1273px] pointer-events-none hidden sm:block">
-                    <Image
-                        src="/background.png"
-                        alt="background gradient"
-                        fill
-                        className="object-contain"
-                        priority
-                    />
-                </div>
-                <div className="absolute left-1/2 -translate-x-1/2 top-[150px] w-full max-w-[600px] h-[600px] pointer-events-none sm:hidden opacity-60">
-                    <Image
-                        src="/background.png"
-                        alt="background gradient"
-                        fill
-                        className="object-contain"
-                        priority
-                    />
-                </div>
+            <div className="w-full min-h-screen bg-[#0a0e27] relative overflow-hidden">
+                <div className="relative min-h-screen sm:min-h-screen lg:min-h-screen h-auto sm:h-auto overflow-hidden">
+                    <div className="absolute inset-0 w-full h-full pointer-events-none bg-gradient-to-b from-blue-600/20 via-indigo-600/10 to-transparent sm:bg-gradient-to-br sm:from-blue-500/30 sm:via-indigo-500/15 sm:to-[#0a0e27]"></div>
 
-                <Navbar />
+                    <Navbar />
 
-                <div className="relative pt-12 sm:pt-16 lg:pt-[90px] pb-12 sm:pb-16 lg:pb-[100px]">
-                    <div className="max-w-[795px] mx-auto text-center px-4 sm:px-6 lg:px-4">
-                        <h1 className="text-[#F2F4FF] text-3xl sm:text-4xl md:text-5xl lg:text-[66px] font-bold leading-tight sm:leading-tight md:leading-tight lg:leading-[72px] mb-4 sm:mb-6">
-                            Streamline Operations with Accurate CRM
-                        </h1>
+                    <div className="relative pt-12 sm:pt-16 lg:pt-[90px] pb-8 sm:pb-16 lg:pb-[100px]">
+                        <div className="max-w-[795px] mx-auto text-center px-4 sm:px-6 lg:px-4">
+                            <h1 className="text-[#F2F4FF] text-3xl sm:text-4xl md:text-5xl lg:text-[66px] font-bold leading-tight sm:leading-tight md:leading-tight lg:leading-[72px] mb-4 sm:mb-6">
+                                Streamline Operations with Accurate CRM
+                            </h1>
 
-                        <p className="max-w-[525px] mx-auto text-[#ECEDFF] text-base sm:text-lg font-normal leading-relaxed sm:leading-[27px] mb-8 sm:mb-10">
-                            Unlock customer engagement with personalized interactions that drive loyalty, growth, and lasting success.
-                        </p>
+                            <p className="max-w-[525px] mx-auto text-[#ECEDFF] text-base sm:text-lg font-normal leading-relaxed sm:leading-[27px] mb-8 sm:mb-10">
+                                Unlock customer engagement with personalized interactions that drive loyalty, growth, and lasting success.
+                            </p>
 
-                        <Link
-                            href="/sign-up"
-                            className="inline-flex items-center gap-1 h-12 px-6 sm:px-8 rounded-[999px] bg-white shadow-[0_1px_2px_0_#274D93,0_0_0_1px_#345FAF,0_20px_46px_-18px_rgba(37,68,143,0.5)] hover:shadow-[0_1px_2px_0_#274D93,0_0_0_1px_#345FAF,0_24px_52px_-18px_rgba(37,68,143,0.6)] transition-shadow"
-                        >
-                            <span className="text-[#262629] text-base sm:text-lg font-medium leading-[31px]">Get Started</span>
-                            <svg
-                                className="w-5 h-5 sm:w-6 sm:h-6 flex-shrink-0"
-                                width="25"
-                                height="25"
-                                viewBox="0 0 25 25"
-                                fill="none"
-                                xmlns="http://www.w3.org/2000/svg"
+                            <Link
+                                href="/sign-up"
+                                className="inline-flex items-center gap-1 h-12 px-6 sm:px-8 rounded-[999px] bg-white shadow-[0_1px_2px_0_#274D93,0_0_0_1px_#345FAF,0_20px_46px_-18px_rgba(37,68,143,0.5)] hover:shadow-[0_1px_2px_0_#274D93,0_0_0_1px_#345FAF,0_24px_52px_-18px_rgba(37,68,143,0.6)] transition-shadow"
                             >
-                                <path d="M15.5001 17.3398L20.5 12.3398L15.5 7.33984" stroke="#262629" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" />
-                                <path d="M4.5 12.3398H20.5" stroke="#262629" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" />
-                            </svg>
-                        </Link>
-                    </div>
+                                <span className="text-[#262629] text-base sm:text-lg font-medium leading-[31px]">Get Started</span>
+                                <svg
+                                    className="w-5 h-5 sm:w-6 sm:h-6 flex-shrink-0"
+                                    width="25"
+                                    height="25"
+                                    viewBox="0 0 25 25"
+                                    fill="none"
+                                    xmlns="http://www.w3.org/2000/svg"
+                                >
+                                    <path d="M15.5001 17.3398L20.5 12.3398L15.5001 7.33984" stroke="#262629" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" />
+                                    <path d="M4.5 12.3398H20.5" stroke="#262629" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" />
+                                </svg>
+                            </Link>
+                        </div>
 
-                    <div className="relative mt-12 sm:mt-16 lg:mt-[80px] px-4 sm:px-8 lg:px-[70px]">
-                        <div className="relative w-full max-w-[1300px] mx-auto">
-                            <Image
-                                src="/dummydashboard.png"
-                                alt="Dashboard preview"
-                                width={1300}
-                                height={924}
-                                className="w-full h-auto rounded-[10px] border border-[#21212A] shadow-lg"
-                            />
+                        <div className="relative mt-12 sm:mt-16 lg:mt-[80px] px-4 sm:px-8 lg:px-[70px]">
+                            <div className="relative w-full max-w-[1300px] mx-auto">
+                                <Image
+                                    src="/dummydashboard.png"
+                                    alt="Dashboard preview"
+                                    width={1300}
+                                    height={924}
+                                    className="w-full h-auto rounded-[10px] border border-[#21212A] shadow-lg"
+                                />
+                            </div>
                         </div>
                     </div>
                 </div>
 
-
-                <div className="mx-auto text-center px-[70px] min-h-screen flex flex-col">
-                    <h1 className="text-[#F2F4FF] text-4xl font-bold leading-tight sm:leading-tight md:leading-tight lg:leading-[72px] mb-4 sm:mb-6">
+                <div className="mx-auto text-center px-4 sm:px-6 lg:px-[70px] py-12 md:py-16 lg:py-20">
+                    <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold leading-tight mb-3 sm:mb-6 bg-gradient-to-r from-blue-400 to-indigo-500 bg-clip-text text-transparent">
                         Built for REAL WORLD web scraping needs
                     </h1>
 
-                    <p className="max-w-[625px] mx-auto text-[#ECEDFF] text-base sm:text-lg font-normal leading-relaxed sm:leading-[27px] mb-8 sm:mb-10">
-                        Scrapeflow empowers you to automate web data extraction with no coding required. Create custom scraping workflows, monitor web pages, and transform raw data into actionable and easier than ever.
+                    <p className="max-w-[625px] mx-auto text-slate-300 text-xs sm:text-base lg:text-lg font-normal leading-relaxed mb-6 sm:mb-10">
+                        Scrapeflow empowers you to automate web data extraction with no coding required. Create custom scraping workflows, monitor web pages, and transform raw data into actionable insights.
                     </p>
 
-                    <div className='grid grid-cols-2 gap-6 flex-col p-4 '>
+                    <div className='grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6 p-2 sm:p-4'>
                         {content.map((item, index) => (
                             <CustomAccordion key={index} title={item.title} subheading={item.subheading} description={item.description} icon={item.icon} />
                         ))}
                     </div>
                 </div>
 
-                <div className="w-full flex justify-center mt-12 mb-6">
-                    <button className="bg-slate-800 no-underline group cursor-pointer relative shadow-2xl shadow-zinc-900 rounded-full p-px text-xs font-semibold leading-6  text-white inline-block">
+                <div className="w-full flex justify-center mt-6 sm:mt-12 mb-6 px-3">
+                    <button className="bg-slate-900 no-underline group cursor-pointer relative shadow-2xl shadow-blue-900/50 rounded-full p-px text-xs font-semibold leading-6 text-white inline-block">
                         <span className="absolute inset-0 overflow-hidden rounded-full">
-                            <span className="absolute inset-0 rounded-full bg-[image:radial-gradient(75%_100%_at_50%_0%,rgba(56,189,248,0.6)_0%,rgba(56,189,248,0)_75%)] opacity-0 transition-opacity duration-500 group-hover:opacity-100" />
+                            <span className="absolute inset-0 rounded-full bg-[image:radial-gradient(75%_100%_at_50%_0%,rgba(59,130,246,0.6)_0%,rgba(79,70,229,0.6)_75%)] opacity-0 transition-opacity duration-500 group-hover:opacity-100" />
                         </span>
-                        <div className="relative flex space-x-2 items-center z-10 rounded-full bg-zinc-950 py-0.5 px-4 ring-1 ring-white/10 ">
+                        <div className="relative flex space-x-2 items-center z-10 rounded-full bg-slate-950 py-0.5 px-4 ring-1 ring-blue-500/30 ">
                             <span>
                                 Features
                             </span>
                         </div>
-                        <span className="absolute -bottom-0 left-[1.125rem] h-px w-[calc(100%-2.25rem)] bg-gradient-to-r from-emerald-400/0 via-emerald-400/90 to-emerald-400/0 transition-opacity duration-500 group-hover:opacity-40" />
+                        <span className="absolute -bottom-0 left-[1.125rem] h-px w-[calc(100%-2.25rem)] bg-gradient-to-r from-blue-400/0 via-blue-400/90 to-blue-400/0 transition-opacity duration-500 group-hover:opacity-40" />
                     </button>
                 </div>
-                <div className='flex flex-col items-center justify-center mx-auto text-center'>
-                    <h1 className='text-white text-4xl font-cold leading-tight sm:leading-tight md:leading-tight lg:leading-[72px] mb:4 sm-mb-6'>Best in-class Features for Web Scraping</h1>
-                    <p className='max-w-[635px] mx-auto text-white text-base sm:text-lg font-normal leading-relaxed sm:leading-[27px] mb-8 sm:mb-10'>Use visual Workflow Nodes to automate navigation, clicks, data extraction, and decision logic
+                <div className='flex flex-col items-center justify-center mx-auto text-center px-4 sm:px-6 lg:px-[70px] py-12 sm:py-16 lg:py-20'>
+                    <h1 className='text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold leading-tight mb-3 sm:mb-6 bg-gradient-to-r from-blue-400 to-indigo-500 bg-clip-text text-transparent'>Best in-class Features for Web Scraping</h1>
+                    <p className='max-w-[635px] mx-auto text-slate-300 text-xs sm:text-base lg:text-lg font-normal leading-relaxed mb-6 sm:mb-10'>Use visual Workflow Nodes to automate navigation, clicks, data extraction, and decision logic
                         — all from a drag-and-drop editor in your browser.</p>
-                    <div className='grid grid-cols-3 gap-4 p-4 min-h-96 mb-24 mr-24 ml-24'>
+                    <div className='grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 p-2 sm:p-4 w-full mb-12 sm:mb-24'>
                         {CardContent.map((item, index) => (
                             <Features key={index} Icon={item.Icon} title={item.title} description={item.description} />
                         ))}
