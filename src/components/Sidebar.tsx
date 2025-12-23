@@ -46,7 +46,7 @@ const DesktopSidebar = () => {
                     return (
                         <Link 
                             key={route.href}
-                            href={`/${route.href}`}
+                            href={`/dashboard/${route.href}`}
                             className={buttonVariants({
                                 variant: activeRoute.href === route.href ? "sidebarActiveItem" : "sidebarItem",
                             })}
