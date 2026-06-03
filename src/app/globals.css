@@ -2,9 +2,9 @@
 
 /* Base theme variables */
 :root {
-  /* Primary color (Tailwind's blue-500) */
-  --primary: 221 83% 53%;
-  --primary-foreground: 210 40% 98%;
+  /* Primary color (emerald-500) */
+  --primary: 160 84% 39%;
+  --primary-foreground: 150 60% 97%;
 
   /* General theme colors */
   --radius: 0.65rem;
@@ -23,17 +23,17 @@
   --destructive: oklch(0.577 0.245 27.325);
   --border: oklch(0.92 0.004 286.32);
   --input: oklch(0.92 0.004 286.32);
-  --ring: oklch(0.623 0.214 259.815);
+  --ring: oklch(0.696 0.17 162.48);
   --chart-1:142 88% 28%;
   --chart-2:140 74% 44%;
   --sidebar: oklch(0.985 0 0);
   --sidebar-foreground: oklch(0.141 0.005 285.823);
-  --sidebar-primary: oklch(0.623 0.214 259.815);
-  --sidebar-primary-foreground: oklch(0.97 0.014 254.604);
+  --sidebar-primary: oklch(0.696 0.17 162.48);
+  --sidebar-primary-foreground: oklch(0.97 0.05 162.48);
   --sidebar-accent: oklch(0.967 0.001 286.375);
   --sidebar-accent-foreground: oklch(0.21 0.006 285.885);
   --sidebar-border: oklch(0.92 0.004 286.32);
-  --sidebar-ring: oklch(0.623 0.214 259.815);
+  --sidebar-ring: oklch(0.696 0.17 162.48);
 }
 
 /* Dark mode overrides */
@@ -45,8 +45,8 @@
   --card-foreground: oklch(0.985 0 0);
   --popover: oklch(0.21 0.006 285.885);
   --popover-foreground: oklch(0.985 0 0);
-  --primary: 221 83% 53%;
-  --primary-foreground: 210 40% 98%;
+  --primary: 160 84% 39%;
+  --primary-foreground: 150 60% 97%;
   --secondary: oklch(0.274 0.006 286.033);
   --secondary-foreground: oklch(0.985 0 0);
   --muted: oklch(0.274 0.006 286.033);
@@ -56,16 +56,16 @@
   --destructive: oklch(0.704 0.191 22.216);
   --border: oklch(1 0 0 / 10%);
   --input: oklch(1 0 0 / 15%);
-  --ring: oklch(0.488 0.243 264.376);
+  --ring: oklch(0.696 0.17 162.48);
   --chart-1:142 88% 28%;
   --chart-2:140 74% 44%;
   --sidebar-foreground: oklch(0.985 0 0);
-  --sidebar-primary: oklch(0.546 0.245 262.881);
-  --sidebar-primary-foreground: oklch(0.379 0.146 265.522);
+  --sidebar-primary: oklch(0.696 0.17 162.48);
+  --sidebar-primary-foreground: oklch(0.18 0.04 162.48);
   --sidebar-accent: oklch(0.274 0.006 286.033);
   --sidebar-accent-foreground: oklch(0.985 0 0);
   --sidebar-border: oklch(1 0 0 / 10%);
-  --sidebar-ring: oklch(0.488 0.243 264.376);
+  --sidebar-ring: oklch(0.696 0.17 162.48);
 }
 
 /* Tailwind v4 theme mappings */

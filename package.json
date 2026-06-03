@@ -7,7 +7,8 @@
     "build": "prisma generate && next build",
     "postinstall": "prisma generate",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "assign-credits": "node scripts/assign-credits.js"
   },
   "dependencies": {
     "@clerk/nextjs": "^6.30.0",

@@ -9,11 +9,11 @@ const Logo = ({ fontSize = "text-2xl", iconSize = 20 }: {
 }) => {
     return (
         <Link href="/" className={cn("text-2xl font-extrabold flex items-center gap-2", fontSize)}>
-            <div className="rounded-xl bg-gradient-to-r from-blue-500 to-indigo-600 p-2">
+            <div className="rounded-xl bg-gradient-to-r from-emerald-500 to-teal-600 p-2">
                 <SquareDashedMousePointer size={iconSize} className='stroke-white' />
             </div>
             <div>
-                <span className="bg-gradient-to-r from-blue-500 to-indigo-600 bg-clip-text text-transparent">Synth</span>
+                <span className="bg-gradient-to-r from-emerald-500 to-teal-500 bg-clip-text text-transparent">Synth</span>
                 <span className='text-slate-700 dark:text-slate-400'>Scrape</span>
             </div>
         </Link>

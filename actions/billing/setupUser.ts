@@ -15,14 +15,14 @@ export async function SetupUser(){
     })
 
     if(!balance){
-        //free 100 credits
+        //free 1000 credits
         await prisma.userBalance.create({
             data:{
                 userId,
-                credits:100
+                credits:1000
             }
         })
     }
 
-    redirect("/")
+    redirect("/dashboard")
 }

@@ -1,175 +1,161 @@
-import React, { useEffect } from 'react'
-import Navbar from './_components/Navbar'
-import Link from 'next/link'
-import Image from 'next/image'
-import CustomAccordion from './_components/CustomAccordion'
-import { Activity } from 'lucide-react'
-import Footer from './_components/Footer'
-import Features from './_components/Features'
-import { FAQSection } from './_components/FAQ'
-import { useUser } from '@clerk/nextjs'
-import { useRouter } from 'next/router'
+import React from 'react'
 import { auth } from '@clerk/nextjs/server'
 import { redirect } from 'next/navigation'
+import Link from 'next/link'
+import { Layers, SlidersHorizontal, Zap } from 'lucide-react'
 
+import Navbar from './_components/Navbar'
+import HeroSection from './_components/HeroSection'
+import { FAQSection } from './_components/FAQ'
+import Footer from './_components/Footer'
 
-const content = [
+const steps = [
     {
-        icon: Activity,
-        title: "Increased Productivity",
-        subheading: "Automate complex web scraping tasks and save valuable time.",
-        description: "Boost your workflow efficiency by automating repetitive data collection. Free your team to focus on insights and decision-making instead of manual scraping."
-    }, {
-        icon: Activity,
-        title: "AI Powered Workflows",
-        subheading: "Leverage AI to manage and manipulate your data during the scraping process.",
-        description: "Our intelligent algorithms analyze or modify your scraped data, providing predictive insights you can act on."
-    }, {
-        icon: Activity,
-        title: "Automated Workflows",
-        subheading: "Build automated workflows that run on your schedule.",
-        description: "Easily chain together scraping steps and automate end-to-end data collection. Set schedules or triggers and let Scrapeflow handle the rest automatically."
-    }, {
-        icon: Activity,
-        title: "Cost Transparency",
-        subheading: "Transparent pricing with clear usage breakdowns.",
-        description: "Know exactly what you’re paying for with detailed cost reports. Optimize your budget and only pay for the data you actually collect."
-    }
+        number: "01",
+        Icon: Layers,
+        title: "Build",
+        description: "Open the visual editor and drag workflow nodes onto the canvas. No code, no terminal.",
+    },
+    {
+        number: "02",
+        Icon: SlidersHorizontal,
+        title: "Configure",
+        description: "Point and click to select what you want. Set schedules, outputs, and automation logic visually.",
+    },
+    {
+        number: "03",
+        Icon: Zap,
+        title: "Run",
+        description: "Execute your workflow and collect clean, structured data. Monitor runs from a live dashboard.",
+    },
 ]
 
-const CardContent = [
-    {
-        Icon: Activity,
-        title: "Visual Workflow Editor",
-        description: "Create and edit scraping workflows with our intuitive drag-and-drop interface."
-    },
-    {
-        Icon: Activity,
-        title: "Data Storage",
-        description: "Store and manage your scraped data with automatic organization and filtering."
-    },
-    {
-        Icon: Activity,
-        title: "AI Powered Extraction",
-        description: "Leverage machine learning to extract and transform data from complex websites automatically."
-    },
-    {
-        Icon: Activity,
-        title: "Advanced Selectors",
-        description: "Target specific elements with precision using our advanced selection tools."
-    }, {
-        Icon: Activity,
-        title: "Scheduling and Monitoring",
-        description: "Schedule scraping jobs and monitor their performance in real-time."
-    }, {
-        Icon: Activity,
-        title: "WebHooks",
-        description: "Connect your workflows to other services with our Webhook."
+export default async function LandingPage() {
+    const { userId } = await auth()
+    if (userId) {
+        redirect('/dashboard')
     }
-]
 
-
-const LandingPage = async () => {
-    const {userId}=await auth();
-    if(userId){
-        redirect('/dashboard');
-    }
     return (
-        <>
-            <div className="w-full min-h-screen bg-[#0a0e27] relative overflow-hidden">
-                <div className="relative min-h-screen sm:min-h-screen lg:min-h-screen h-auto sm:h-auto overflow-hidden">
-                    <div className="absolute inset-0 w-full h-full pointer-events-none bg-gradient-to-b from-blue-600/20 via-indigo-600/10 to-transparent sm:bg-gradient-to-br sm:from-blue-500/30 sm:via-indigo-500/15 sm:to-[#0a0e27]"></div>
+        <div className="relative bg-[#070d0a] overflow-x-hidden">
+            {/* Dot grid */}
+            <div
+                className="fixed inset-0 pointer-events-none z-0"
+                style={{
+                    backgroundImage: 'radial-gradient(circle, rgba(16,185,129,0.065) 1px, transparent 1px)',
+                    backgroundSize: '32px 32px',
+                }}
+            />
 
-                    <Navbar />
+            <Navbar />
+            <HeroSection />
 
-                    <div className="relative pt-12 sm:pt-16 lg:pt-[90px] pb-8 sm:pb-16 lg:pb-[100px]">
-                        <div className="max-w-[795px] mx-auto text-center px-4 sm:px-6 lg:px-4">
-                            <h1 className="text-[#F2F4FF] text-3xl sm:text-4xl md:text-5xl lg:text-[66px] font-bold leading-tight sm:leading-tight md:leading-tight lg:leading-[72px] mb-4 sm:mb-6">
-                                Streamline Operations with Accurate CRM
-                            </h1>
+            {/* Section separator */}
+            <div className="relative z-10 h-px mx-4 sm:mx-8 lg:mx-[70px] bg-gradient-to-r from-transparent via-emerald-900/50 to-transparent" />
 
-                            <p className="max-w-[525px] mx-auto text-[#ECEDFF] text-base sm:text-lg font-normal leading-relaxed sm:leading-[27px] mb-8 sm:mb-10">
-                                Unlock customer engagement with personalized interactions that drive loyalty, growth, and lasting success.
-                            </p>
+            {/* How it works — tinted background for contrast */}
+            <section id="features" className="relative z-10 bg-[#0c1a12] py-24 scroll-mt-16">
+                {/* Ambient glow for this section */}
+                <div className="absolute inset-0 pointer-events-none overflow-hidden">
+                    <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[600px] h-[200px] rounded-full bg-emerald-800/10 blur-[80px]" />
+                </div>
 
-                            <Link
-                                href="/sign-up"
-                                className="inline-flex items-center gap-1 h-12 px-6 sm:px-8 rounded-[999px] bg-white shadow-[0_1px_2px_0_#274D93,0_0_0_1px_#345FAF,0_20px_46px_-18px_rgba(37,68,143,0.5)] hover:shadow-[0_1px_2px_0_#274D93,0_0_0_1px_#345FAF,0_24px_52px_-18px_rgba(37,68,143,0.6)] transition-shadow"
+                <div className="relative px-4 sm:px-8 lg:px-[70px] max-w-6xl mx-auto">
+                    <div className="mb-16 text-center">
+                        <p className="text-emerald-500/70 text-xs font-bold uppercase tracking-[0.2em] mb-3">How it works</p>
+                        <h2 className="text-3xl sm:text-4xl lg:text-5xl font-black text-[#ecfdf5] tracking-tight">
+                            From zero to running scraper in minutes
+                        </h2>
+                    </div>
+
+                    <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
+                        {steps.map(({ number, Icon, title, description }) => (
+                            <div
+                                key={number}
+                                className="relative bg-[#070d0a] border border-emerald-900/20 rounded-xl p-6 overflow-hidden group hover:border-emerald-800/40 transition-colors"
                             >
-                                <span className="text-[#262629] text-base sm:text-lg font-medium leading-[31px]">Get Started</span>
-                                <svg
-                                    className="w-5 h-5 sm:w-6 sm:h-6 flex-shrink-0"
-                                    width="25"
-                                    height="25"
-                                    viewBox="0 0 25 25"
-                                    fill="none"
-                                    xmlns="http://www.w3.org/2000/svg"
-                                >
-                                    <path d="M15.5001 17.3398L20.5 12.3398L15.5001 7.33984" stroke="#262629" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" />
-                                    <path d="M4.5 12.3398H20.5" stroke="#262629" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" />
-                                </svg>
-                            </Link>
-                        </div>
+                                {/* Left accent bar */}
+                                <div className="absolute left-0 top-0 bottom-0 w-[2px] bg-gradient-to-b from-emerald-500/70 via-emerald-500/20 to-transparent" />
+                                <div className="flex items-center gap-2 mb-5">
+                                    <span className="text-emerald-900/80 group-hover:text-emerald-800 text-xs font-black font-mono transition-colors">{number}</span>
+                                    <Icon className="text-emerald-500" size={18} />
+                                </div>
+                                <h3 className="text-[#ecfdf5] text-xl font-bold mb-2">{title}</h3>
+                                <p className="text-[#3a5a48] text-sm leading-relaxed">{description}</p>
+                            </div>
+                        ))}
+                    </div>
+                </div>
+            </section>
 
-                        <div className="relative mt-12 sm:mt-16 lg:mt-[80px] px-4 sm:px-8 lg:px-[70px]">
-                            <div className="relative w-full max-w-[1300px] mx-auto">
-                                <Image
-                                    src="/dummydashboard.png"
-                                    alt="Dashboard preview"
-                                    width={1300}
-                                    height={924}
-                                    className="w-full h-auto rounded-[10px] border border-[#21212A] shadow-lg"
-                                />
+            {/* Section separator */}
+            <div className="relative z-10 h-px mx-4 sm:mx-8 lg:mx-[70px] bg-gradient-to-r from-transparent via-emerald-900/40 to-transparent" />
+
+            {/* Pricing — back to base dark, card stands out via contrast */}
+            <section id="pricing" className="relative z-10 py-24 scroll-mt-16">
+                <div className="relative px-4 sm:px-8 lg:px-[70px] max-w-6xl mx-auto">
+                    <div className="mb-16 text-center">
+                        <p className="text-emerald-500/70 text-xs font-bold uppercase tracking-[0.2em] mb-3">Pricing</p>
+                        <h2 className="text-3xl sm:text-4xl lg:text-5xl font-black text-[#ecfdf5] tracking-tight">
+                            Pay for what you use, Nothing more.
+                        </h2>
+                    </div>
+
+                    <div className="max-w-md mx-auto">
+                        {/* Pricing card — emerald top stripe for visual anchor */}
+                        <div className="relative bg-[#0c1a12] border border-emerald-900/40 rounded-2xl overflow-hidden">
+                            {/* Top stripe */}
+                            <div className="h-1 bg-gradient-to-r from-emerald-600 via-teal-400 to-emerald-600" />
+
+                            <div className="p-8 sm:p-10">
+                                {/* Ambient glow inside card */}
+                                <div className="absolute top-0 right-0 w-48 h-48 rounded-full bg-emerald-500/5 blur-[50px] pointer-events-none" />
+
+                                <div className="relative flex items-start justify-between gap-4 mb-8">
+                                    <div>
+                                        <p className="text-emerald-500 text-xs font-bold uppercase tracking-[0.15em] mb-2">Credit-based</p>
+                                        <h3 className="text-[#ecfdf5] text-4xl font-black">Pay as you go</h3>
+                                    </div>
+                                    <span className="flex-shrink-0 mt-1 px-3 py-1 rounded-full bg-emerald-500/8 border border-emerald-600/25 text-emerald-400 text-xs font-medium">
+                                        No subscription
+                                    </span>
+                                </div>
+
+                                <ul className="relative space-y-3 mb-8">
+                                    {[
+                                        "1,000 free credits on signup",
+                                        "Credits never expire",
+                                        "Pay only for what you run",
+                                        "Full access to all features from day one",
+                                    ].map((item) => (
+                                        <li key={item} className="flex items-center gap-3 text-[#6b9e85] text-sm">
+                                            <span className="w-4 h-4 rounded-full border border-emerald-700/50 bg-emerald-900/40 flex items-center justify-center flex-shrink-0">
+                                                <svg width="8" height="8" viewBox="0 0 8 8" fill="none">
+                                                    <path d="M1.5 4l2 2 3-3" stroke="#10b981" strokeWidth="1.2" strokeLinecap="round" strokeLinejoin="round" />
+                                                </svg>
+                                            </span>
+                                            {item}
+                                        </li>
+                                    ))}
+                                </ul>
+
+                                <Link
+                                    href="/sign-up"
+                                    className="relative inline-flex items-center justify-center w-full h-12 rounded-full bg-emerald-500 hover:bg-emerald-400 text-[#070d0a] font-bold text-base transition-all shadow-[0_0_24px_rgba(16,185,129,0.2)] hover:shadow-[0_0_36px_rgba(16,185,129,0.35)]"
+                                >
+                                    Start with free credits
+                                </Link>
                             </div>
                         </div>
                     </div>
                 </div>
+            </section>
 
-                <div className="mx-auto text-center px-4 sm:px-6 lg:px-[70px] py-12 md:py-16 lg:py-20">
-                    <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold leading-tight mb-3 sm:mb-6 bg-gradient-to-r from-blue-400 to-indigo-500 bg-clip-text text-transparent">
-                        Built for REAL WORLD web scraping needs
-                    </h1>
+            {/* Section separator */}
+            <div className="relative z-10 h-px mx-4 sm:mx-8 lg:mx-[70px] bg-gradient-to-r from-transparent via-emerald-900/40 to-transparent" />
 
-                    <p className="max-w-[625px] mx-auto text-slate-300 text-xs sm:text-base lg:text-lg font-normal leading-relaxed mb-6 sm:mb-10">
-                        Scrapeflow empowers you to automate web data extraction with no coding required. Create custom scraping workflows, monitor web pages, and transform raw data into actionable insights.
-                    </p>
-
-                    <div className='grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6 p-2 sm:p-4'>
-                        {content.map((item, index) => (
-                            <CustomAccordion key={index} title={item.title} subheading={item.subheading} description={item.description} icon={item.icon} />
-                        ))}
-                    </div>
-                </div>
-
-                <div className="w-full flex justify-center mt-6 sm:mt-12 mb-6 px-3">
-                    <button className="bg-slate-900 no-underline group cursor-pointer relative shadow-2xl shadow-blue-900/50 rounded-full p-px text-xs font-semibold leading-6 text-white inline-block">
-                        <span className="absolute inset-0 overflow-hidden rounded-full">
-                            <span className="absolute inset-0 rounded-full bg-[image:radial-gradient(75%_100%_at_50%_0%,rgba(59,130,246,0.6)_0%,rgba(79,70,229,0.6)_75%)] opacity-0 transition-opacity duration-500 group-hover:opacity-100" />
-                        </span>
-                        <div className="relative flex space-x-2 items-center z-10 rounded-full bg-slate-950 py-0.5 px-4 ring-1 ring-blue-500/30 ">
-                            <span>
-                                Features
-                            </span>
-                        </div>
-                        <span className="absolute -bottom-0 left-[1.125rem] h-px w-[calc(100%-2.25rem)] bg-gradient-to-r from-blue-400/0 via-blue-400/90 to-blue-400/0 transition-opacity duration-500 group-hover:opacity-40" />
-                    </button>
-                </div>
-                <div className='flex flex-col items-center justify-center mx-auto text-center px-4 sm:px-6 lg:px-[70px] py-12 sm:py-16 lg:py-20'>
-                    <h1 className='text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold leading-tight mb-3 sm:mb-6 bg-gradient-to-r from-blue-400 to-indigo-500 bg-clip-text text-transparent'>Best in-class Features for Web Scraping</h1>
-                    <p className='max-w-[635px] mx-auto text-slate-300 text-xs sm:text-base lg:text-lg font-normal leading-relaxed mb-6 sm:mb-10'>Use visual Workflow Nodes to automate navigation, clicks, data extraction, and decision logic
-                        — all from a drag-and-drop editor in your browser.</p>
-                    <div className='grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 p-2 sm:p-4 w-full mb-12 sm:mb-24'>
-                        {CardContent.map((item, index) => (
-                            <Features key={index} Icon={item.Icon} title={item.title} description={item.description} />
-                        ))}
-                    </div>
-                </div>
-            </div>
-            
-            <FAQSection/>
+            <FAQSection />
             <Footer />
-        </>
+        </div>
     )
 }
-
-export default LandingPage
