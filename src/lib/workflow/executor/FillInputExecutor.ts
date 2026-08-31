@@ -6,10 +6,12 @@ export async function FillInputExecutor(environment:ExecutionEnvironment<typeof 
         const selector=environment.getInput("Selector")
         if(!selector){
             environment.log.error("input->selector not defined")
+            return false
         }
         const value=environment.getInput("Value")
         if(!value){
             environment.log.error("input->value not defined")
+            return false
         }
         await environment.getPage()!.type(selector,value)
         return true 

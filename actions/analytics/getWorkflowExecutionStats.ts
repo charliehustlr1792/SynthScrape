@@ -8,7 +8,7 @@ import { eachDayOfInterval, format } from "date-fns";
 import { WorkflowExecutionStatus } from "../../types/workflow";
 
 type Stats=Record<string,{
-        sucess:number;
+        success:number;
         failed:number;
     }>
 
@@ -44,7 +44,7 @@ export async function GetWorkflowExecutionStats(period:Period){
 
     /* [
         "2024-08-01":{
-            sucess:22,
+            success:22,
             failed:4
         }
     ] */
@@ -52,7 +52,7 @@ export async function GetWorkflowExecutionStats(period:Period){
     executions.forEach((execution)=>{
         const date=format(execution.startedAt!,dateFormat)
         if(execution.status===WorkflowExecutionStatus.COMPLETED){
-            stats[date].sucess+=1
+            stats[date].success+=1
         }
         if(execution.status===WorkflowExecutionStatus.FAILED){
             stats[date].failed+=1

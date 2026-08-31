@@ -24,6 +24,7 @@ export async function ExtractTextFromElementExecutor(environment:ExecutionEnviro
         const extractedText=$.text(element)
         if(!extractedText){
             environment.log.error("Element has no text")
+            return false
         }
 
         environment.setOutput("Extracted text",extractedText)

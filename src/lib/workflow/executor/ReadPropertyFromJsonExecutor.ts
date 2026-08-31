@@ -6,11 +6,13 @@ export async function ReadPropertyFromJsonExecutor(environment:ExecutionEnvironm
         const jsonData=environment.getInput("JSON")
         if(!jsonData){
             environment.log.error("input->JSON not defined")
+            return false
         }
         
         const propertyName=environment.getInput("Property name")
         if(!propertyName){
             environment.log.error("input->propertyName not defined")
+            return false
         }
 
         const json=JSON.parse(jsonData)

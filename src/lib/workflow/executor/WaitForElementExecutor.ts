@@ -6,11 +6,13 @@ export async function WaitForELementExecutor(environment:ExecutionEnvironment<ty
         const selector=environment.getInput("Selector")
         if(!selector){
             environment.log.error("input->selector not defined")
+            return false
         }
 
         const visibility=environment.getInput("Visibility")
         if(!visibility){
             environment.log.error("input->visibility not defined")
+            return false
         }
 
         await environment.getPage()!.waitForSelector(selector,{

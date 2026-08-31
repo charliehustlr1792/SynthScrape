@@ -6,16 +6,19 @@ export async function AddPropertyToJsonExecutor(environment:ExecutionEnvironment
         const jsonData=environment.getInput("JSON")
         if(!jsonData){
             environment.log.error("input->JSON not defined")
+            return false
         }
         
         const propertyName=environment.getInput("Property name")
         if(!propertyName){
             environment.log.error("input->propertyName not defined")
+            return false
         }
         
         const propertyValue=environment.getInput("Property value")
         if(!propertyValue){
             environment.log.error("input->propertyValue not defined")
+            return false
         }
 
 
