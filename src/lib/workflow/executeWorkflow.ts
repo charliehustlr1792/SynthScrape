@@ -10,7 +10,7 @@ import { TaskRegistry } from './task/registry';
 import { ExecutorRegistry } from './executor/registry';
 import { Environment } from '../../../types/executor';
 import { TaskParamType } from '../../../types/task';
-import { Browser, Page } from 'puppeteer';
+import { Browser, Page } from 'puppeteer-core';
 import { Edge } from '@xyflow/react';
 import { createLogCollector } from '../log';
 
@@ -49,7 +49,7 @@ export async function ExecuteWorkflow(executionId:string,nextRunAt?:Date) {
     
     await cleanupEnvironment(environment)
 
-    revalidatePath('/workflows/runs')
+    revalidatePath('/workflow/runs')
 }
 
 async function initializeWorkflowExecution(executionId:string,workflowId:string,nextRunAt?:Date){

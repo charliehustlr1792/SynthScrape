@@ -16,14 +16,15 @@ export async function POST(request:Request){
 
         switch(event.type){
             case "checkout.session.completed":
-                HandleCheckoutSessionCompleted(event.data.object)
+                await HandleCheckoutSessionCompleted(event.data.object)
                 break;
             default:
                 break;
         }
 
         return new NextResponse(null,{status:200})
-    }catch(error){
-        console.error("stripe webhook error")
+    }catch(err){
+        console.error("Webhook Error:",err)
+        return new NextResponse("Webhook Error",{status:400})
     }
 }

@@ -8,7 +8,7 @@ import { eachDayOfInterval, format } from "date-fns";
 import { ExecutionPhaseStatus} from "../../types/workflow";
 
 type Stats=Record<string,{
-        sucess:number;
+        success:number;
         failed:number;
     }>
 
@@ -49,7 +49,7 @@ export async function GetCreditsUsageInPeriod(period:Period){
 
     /* [
         "2024-08-01":{
-            sucess:22,
+            success:22,
             failed:4
         }
     ] */
@@ -57,7 +57,7 @@ export async function GetCreditsUsageInPeriod(period:Period){
     executionPhases.forEach((phase)=>{
         const date=format(phase.startedAt!,dateFormat)
         if(phase.status===COMPLETED){
-            stats[date].sucess+=phase.creditsConsumed || 0
+            stats[date].success+=phase.creditsConsumed || 0
         }
         if(phase.status===FAILED){
             stats[date].failed+=phase.creditsConsumed || 0
