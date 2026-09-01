@@ -61,7 +61,7 @@ async function StatsCards({selectedPeriod}:{selectedPeriod:Period}){
     <div className='grid gap-3 lg:gap-8 lg:grid-cols-3 min-h-[120px]'>
       <StatsCard 
         title="Workflow executions"
-        value={data.worklowExecutions}
+        value={data.workflowExecutions}
         icon={CirclePlayIcon}
       />
       <StatsCard 

@@ -28,5 +28,5 @@ function triggerWorkflow(workflowId: string) {
         },
         cache: "no-store"
     }).catch((error) =>
-        console.error("Error triggerign workflow with id", workflowId, ":error->", error.message))
+        console.error("Error triggering workflow with id", workflowId, ":error->", error.message))
 }

@@ -55,7 +55,7 @@ export async function ExtractDataWithAIExecutor(environment:ExecutionEnvironment
             `Prompt tokens: ${response.response.usageMetadata?.promptTokenCount}`
         )
         environment.log.info(
-            `Completition tokens: ${response.response.usageMetadata?.candidatesTokenCount}`
+            `Completion tokens: ${response.response.usageMetadata?.candidatesTokenCount}`
         )
 
         const result=response.response.text()

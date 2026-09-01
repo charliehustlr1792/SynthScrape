@@ -24,7 +24,7 @@ const Credentialspage = () => {
                 <ShieldIcon className='h-4 w-4 stroke-primary'/>
                 <AlertTitle className='text-primary'>Encryption</AlertTitle>
                 <AlertDescription>
-                    All information is securely encrypted,emsuring you data remains minimum safe
+                    All information is securely encrypted, ensuring your data remains safe
                 </AlertDescription>
             </Alert>
 

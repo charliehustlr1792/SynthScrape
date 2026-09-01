@@ -5,7 +5,7 @@ import { auth } from "@clerk/nextjs/server"
 export async function GetUserPurchaseHistory(){
     const {userId}=await auth()
     if(!userId){
-        throw new Error("unauthenticate")
+        throw new Error("unauthenticated")
     }
 
     return prisma.userPurchase.findMany({

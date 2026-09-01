@@ -23,7 +23,7 @@ export async function UnpublishWorkflow(id:string) {
     }
 
     if(workflow.status!==WorkflowStatus.PUBLISHED){
-        throw new Error("WOrkflow not published")
+        throw new Error("Workflow is not published")
     }
 
     await prisma.workflow.update({

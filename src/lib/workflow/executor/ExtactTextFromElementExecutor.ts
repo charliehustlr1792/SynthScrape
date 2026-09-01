@@ -5,7 +5,7 @@ export async function ExtractTextFromElementExecutor(environment:ExecutionEnviro
     try{
         const selector=environment.getInput("Selector")
         if(!selector){
-            environment.log.error("Selected not defined")
+            environment.log.error("Selector not defined")
             return false
         }
         const html=environment.getInput("Html")
