@@ -66,7 +66,7 @@ const ExecutionViewer = ({ initialData }: {
     const creditsConsumed = GetPhasesTotalCost(query.data?.phases || [])
     return (
         <div className='flex w-full h-full'>
-            <aside className='w-[440px] min-w-[440px] max-w-[440px] border-r-2 border-separate flex flex-grow flex-xol overflow-hidden'>
+            <aside className='w-[440px] min-w-[440px] max-w-[440px] border-r-2 border-separate flex flex-grow flex-col overflow-hidden'>
                 <div className="py-4 px-2">
                     <ExecutionLabel
                         Icon={CircleDashedIcon}
@@ -145,7 +145,7 @@ const ExecutionViewer = ({ initialData }: {
                     </div>
                 )}
                 {!isRunning && selectedPhase && phaseDetails.data && (
-                    <div className="flex flex-col py-4 contianer gap-4 overflow-auto">
+                    <div className="flex flex-col py-4 container gap-4 overflow-auto">
                         <div className="flex gap-2 items-center">
                             <Badge variant={"outline"} className='space-x-4'>
                                 <div className="flex gap-1 items-center">
@@ -261,8 +261,8 @@ function LogViewer({ logs }: { logs: ExecutionLog[] | undefined }) {
                 <TableBody>
                     {logs.map((log) => (
                         <TableRow key={log.id} className='text-muted-foreground'>
-                            <TableCell width={190} className='text-xs text0muted-foreground p-[2px] pl-4'>{log.timestamp.toISOString()}</TableCell>
-                            <TableCell width={80} className={cn("uppercase text-xs font-bol p-[3px] pl-4", log.logLevel as LogLevel === "error" && "text-destructive", log.logLevel as LogLevel === "info" && "text-primary")}>
+                            <TableCell width={190} className='text-xs text-muted-foreground p-[2px] pl-4'>{log.timestamp.toISOString()}</TableCell>
+                            <TableCell width={80} className={cn("uppercase text-xs font-bold p-[3px] pl-4", log.logLevel as LogLevel === "error" && "text-destructive", log.logLevel as LogLevel === "info" && "text-primary")}>
                                 {log.logLevel}
                             </TableCell>
                             <TableCell className='text-sm flex-1 p-[3px] pl-4'>{log.message}</TableCell>

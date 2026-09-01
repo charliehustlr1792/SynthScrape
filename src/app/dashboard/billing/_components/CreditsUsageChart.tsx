@@ -23,7 +23,7 @@ const CreditsUsageChart = ({data,title,description}:{data:ChartData;title:string
   return (
     <Card>
         <CardHeader>
-            <CardTitle className='text-2xl font-bold flex item-center gap-2'>
+            <CardTitle className='text-2xl font-bold flex items-center gap-2'>
                 <ChartColumnStackedIcon className='w-6 h-6 text-primary'/>
                 {title}
             </CardTitle>

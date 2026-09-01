@@ -9,7 +9,7 @@ export default async function ExecutionsPage({params}:{params:Promise<{workflowI
         <div className="h-full w-full overflow-auto">
             <Topbar workflowId={(await params).workflowId} hideButtons title="All runs" subTitle="List of all your workflow runs" />
             <Suspense fallback={<div className="flex h-full w-full items-center justify-center">
-                <Loader2Icon size={30} className="aniamte-spin stroke-primary" />
+                <Loader2Icon size={30} className="animate-spin stroke-primary" />
             </div>}>
                 <ExecutionsTableWrapper workflowId={(await params).workflowId} />
             </Suspense>
@@ -31,7 +31,7 @@ async function ExecutionsTableWrapper({ workflowId }: { workflowId: string }) {
                         <InboxIcon size={40} className="stroke-primary" />
                     </div>
                     <div className="flex flex-col gap-1 text-center">
-                        <p className="font-bold">No runs ahve been triggered yes for this workflow</p>
+                        <p className="font-bold">No runs have been triggered yet for this workflow</p>
                         <p className="text-sm text-muted-foreground">You can trigger a new run in the editor page</p>
                     </div>
                 </div>
