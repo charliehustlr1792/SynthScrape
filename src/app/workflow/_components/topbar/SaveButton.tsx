@@ -17,7 +17,7 @@ const SaveButton = ({workflowId}:{workflowId:string}) => {
             toast.success("Flow saved successfully",{id:"save-workflow"})
         },
         onError:()=>{
-            toast.error("Something went wrong",{id:"save-worflow"})
+            toast.error("Something went wrong",{id:"save-workflow"})
         }
     })
   return (
@@ -27,7 +27,7 @@ const SaveButton = ({workflowId}:{workflowId:string}) => {
     className='flex items-center gap-2'
     onClick={()=>{
         const workflowDefinition= JSON.stringify(toObject())
-        toast.loading("Saving workflow...",{id:"save-worflow"})
+        toast.loading("Saving workflow...",{id:"save-workflow"})
         saveMutation.mutate({
             id:workflowId,
             definition:workflowDefinition
