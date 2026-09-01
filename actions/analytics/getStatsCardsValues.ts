@@ -39,7 +39,7 @@ export async function GetStatsCardsValue(period:Period){
     })
     
     const stats={
-        worklowExecutions:executions.length,
+        workflowExecutions:executions.length,
         creditsConsumed:0,
         phaseExecutions:0
     }

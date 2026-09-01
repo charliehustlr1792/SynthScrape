@@ -36,12 +36,12 @@ export async function RunWorkflow(form: {
     let workflowDefinition=flowDefinition
     if (workflow.status == WorkflowStatus.PUBLISHED) {
         if (!workflow.executionPlan) {
-            throw new Error("No execution plan fould in published workflow")
+            throw new Error("No execution plan found in published workflow")
         }
         executionPlan = JSON.parse(workflow.executionPlan)
         workflowDefinition=workflow.definition
     } else {
-        //wprkflow is a draft
+        //workflow is a draft
         if (!flowDefinition) {
             throw new Error("Flow definition is not defined")
         }

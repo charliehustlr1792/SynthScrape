@@ -33,7 +33,7 @@ model Workflow {
   createdAt DateTime @default(now())
   updateAt  DateTime @updatedAt
 
-  exectutions WorkflowExecution[]
+  executions  WorkflowExecution[]
 
   @@unique([name, userId])
 }
