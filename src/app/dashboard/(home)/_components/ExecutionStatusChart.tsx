@@ -23,7 +23,7 @@ const ExecutionStatusChart = ({data}:{data:ChartData}) => {
   return (
     <Card>
         <CardHeader>
-            <CardTitle className='text-2xl font-bold flex item-center gap-2'>
+            <CardTitle className='text-2xl font-bold flex items-center gap-2'>
                 <Layers2 className='w-6 h-6 text-primary'/>
                 Workflow execution status
             </CardTitle>

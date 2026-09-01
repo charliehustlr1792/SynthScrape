@@ -74,7 +74,7 @@ const SchedulerDialog = (props: { cron: string | null, workflowId: string }) => 
             Specify a cron expresssion to schedule periodic workflow execution. All time are in UTC
           </p>
           <Input placeholder="Eg. * * * * *" value={cron} onChange={(e) => setCron(e.target.value)} />
-          <div className={cn("bg-accent rounded-md p- bordere text-sm bordere-destructive text-destructive", validCron && "border-primary text-primary")}>{validCron ? readableCron : "Not a valid cron expression"}</div>
+          <div className={cn("bg-accent rounded-md p-4 border text-sm border-destructive text-destructive", validCron && "border-primary text-primary")}>{validCron ? readableCron : "Not a valid cron expression"}</div>
           {workflowHasValidCron && (
             <DialogClose asChild>
               <div>
