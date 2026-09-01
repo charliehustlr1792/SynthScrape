@@ -55,7 +55,7 @@ flowchart TD
     SA --> Plan
     Plan -->|executionPlan JSON| PG
     SA -->|create WorkflowExecution + ExecutionPhases| PG
-    SA -->|fire-and-forget, not awaited| Engine
+    SA -->|"deferred via after()"| Engine
 
     CronAPI -->|"find nextRunAt <= now"| PG
     CronAPI -->|"fan-out fetch, not awaited"| ExecAPI
@@ -78,9 +78,11 @@ Notes that the diagram encodes deliberately:
 
 - The cron poller does **not** claim or advance `nextRunAt`; that only happens later inside
   `initializeWorkflowExecution` (`src/lib/workflow/executeWorkflow.ts:55`).
-- `RunWorkflow` calls `ExecuteWorkflow(execution.id)` without `await`
-  (`actions/workflows/runWorkflow.ts:94`), while `/api/workflows/execute` awaits it
-  (`src/app/api/workflows/execute/route.ts:83`). Two different lifetimes for the same engine.
+- `RunWorkflow` defers the engine with `after()` (`actions/workflows/runWorkflow.ts:98`),
+  while `/api/workflows/execute` awaits it directly (`src/app/api/workflows/execute/route.ts:83`).
+  Two different lifetimes for the same engine. The call was originally a bare unawaited promise,
+  which worked on a long-lived local server and silently abandoned every run on serverless, where the
+  instance is frozen once the response is sent.
 - Phases execute strictly sequentially in the order Postgres returns them
   (`src/lib/workflow/executeWorkflow.ts:38`); the phase *numbers* produced by the planner are not
   used to parallelise anything at runtime.
@@ -178,8 +180,6 @@ Required at runtime (names only; see `.env`, which is git-ignored):
 `NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY`, `CLERK_SECRET_KEY`, `STRIPE_SECRET_KEY`,
 `STRIPE_WEBHOOK_SECRET`, and `STRIPE_{SMALL,MEDIUM,LARGE}_PACK_ID`.
 
-There is no `vercel.json`, no CI workflow, no Dockerfile, and no scheduler configured in the repo —
-`/api/workflows/cron` has no caller committed alongside it.
 
 ## Getting Started
 
