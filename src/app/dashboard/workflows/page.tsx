@@ -6,6 +6,10 @@ import { GetWorkflowsForUser } from '../../../../actions/workflows/getWorkflowsF
 import CreateWorkflowDialogue from './_components/CreateWorkflowDialogue'
 import WorkflowCard from './_components/WorkflowCard'
 
+// Workflow execution is kicked off from this route via the RunWorkflow server
+// action, so the segment needs headroom for a full scrape to finish.
+export const maxDuration = 60
+
 const page = () => {
     return (
         <div className='flex-1 flex flex-col h-full'>

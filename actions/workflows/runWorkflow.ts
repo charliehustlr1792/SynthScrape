@@ -6,6 +6,7 @@ import { ExecutionPhaseStatus, WorkflowExecutionPlan, WorkflowExecutionStatus, W
 import { FlowToExecutionPlan } from "@/lib/workflow/executionPlan"
 import { TaskRegistry } from "@/lib/workflow/task/registry"
 import { redirect } from "next/navigation"
+import { after } from "next/server"
 import { ExecuteWorkflow } from "@/lib/workflow/executeWorkflow"
 
 export async function RunWorkflow(form: {
@@ -91,6 +92,9 @@ export async function RunWorkflow(form: {
         throw new Error("workflow execution not created")
     }
 
-    ExecuteWorkflow(execution.id)
+    // Run the engine after the response is sent. On serverless the function
+    // instance is frozen once the response completes, which would abandon a
+    // bare floating promise mid-execution; after() keeps it alive.
+    after(() => ExecuteWorkflow(execution.id))
     redirect(`/workflow/runs/${workflowId}/${execution.id}`)
 }
